@@ -79,6 +79,13 @@ body {
 }
 
 /* Custom range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 24px;
+}
 input[type="range"]::-webkit-slider-runnable-track {
   background: var(--surface-lowest);
   height: 8px;

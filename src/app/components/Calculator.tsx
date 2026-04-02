@@ -512,7 +512,7 @@ export default function Calculator() {
                     aria-valuemin={5}
                     aria-valuemax={60}
                     aria-valuenow={hoursPerWeek}
-                    className="w-full h-2 rounded-full appearance-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
+                    className="w-full rounded-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
                   />
                   <div className="flex justify-between mt-3 text-[10px] uppercase tracking-widest text-[var(--text-muted)] font-bold">
                     <span>Min (5h)</span>
