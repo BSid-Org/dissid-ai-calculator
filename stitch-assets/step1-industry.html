@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface": "#e2e2e8",
+            "surface-dim": "#111318",
+            "on-background": "#e2e2e8",
+            "on-primary-fixed": "#23005c",
+            "surface": "#111318",
+            "secondary": "#ffb0cd",
+            "secondary-fixed": "#ffd9e4",
+            "surface-tint": "#d0bcff",
+            "surface-bright": "#37393e",
+            "primary": "#d0bcff",
+            "on-primary-container": "#340080",
+            "primary-fixed-dim": "#d0bcff",
+            "on-secondary-container": "#ffbad3",
+            "tertiary-fixed": "#a2eeff",
+            "inverse-primary": "#6d3bd7",
+            "on-secondary": "#640039",
+            "on-primary-fixed-variant": "#5516be",
+            "on-error": "#690005",
+            "inverse-surface": "#e2e2e8",
+            "tertiary-container": "#009fb4",
+            "on-tertiary-container": "#002f36",
+            "primary-fixed": "#e9ddff",
+            "surface-container-high": "#282a2e",
+            "on-tertiary": "#00363e",
+            "inverse-on-surface": "#2f3035",
+            "on-secondary-fixed": "#3e0022",
+            "primary-container": "#a078ff",
+            "on-surface-variant": "#cbc3d7",
+            "error-container": "#93000a",
+            "surface-variant": "#333539",
+            "surface-container-low": "#1a1c20",
+            "tertiary": "#2fd9f4",
+            "on-tertiary-fixed": "#001f25",
+            "tertiary-fixed-dim": "#2fd9f4",
+            "secondary-fixed-dim": "#ffb0cd",
+            "outline-variant": "#494454",
+            "on-tertiary-fixed-variant": "#004e5a",
+            "error": "#ffb4ab",
+            "on-primary": "#3c0091",
+            "surface-container": "#1e2024",
+            "on-error-container": "#ffdad6",
+            "background": "#111318",
+            "outline": "#958ea0",
+            "surface-container-highest": "#333539",
+            "surface-container-lowest": "#0c0e12",
+            "on-secondary-fixed-variant": "#8c0053",
+            "secondary-container": "#aa0266"
+          },
+          fontFamily: {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #0A0C10;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(30, 32, 36, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    .ghost-border {
+      outline: 1px solid rgba(149, 142, 160, 0.1);
+    }
+    .glass-card:hover .ghost-border {
+      outline-color: rgba(149, 142, 160, 0.25);
+    }
+    .fluid-progress {
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="text-on-surface bg-surface-dim selection:bg-primary/30 min-h-screen flex flex-col">
+<!-- TopAppBar predicted from JSON -->
+<header class="fixed top-0 w-full z-50 bg-[#0A0C10] dark:bg-[#0A0C10] shadow-[0_0_40px_rgba(208,188,255,0.06)]">
+<div class="flex flex-col items-center w-full px-6 py-4">
+<div class="flex items-center justify-between w-full max-w-7xl">
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold tracking-tighter text-[#e2e2e8]">DISSID Estimator</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 font-inter tracking-tight font-semibold text-sm">
+<span class="text-white font-bold cursor-default">Onboarding</span>
+<span class="text-[#cbc3d7] hover:text-white transition-colors cursor-pointer">Features</span>
+<span class="text-[#cbc3d7] hover:text-white transition-colors cursor-pointer">Pricing</span>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#cbc3d7] hover:text-white transition-colors scale-98 active:opacity-80 transition-all">help_outline</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a user with neutral lighting and clean studio background for profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs4esEG3OBv7k0OvYD-kzsclUMpycamLB4uQ9jRctY86bheRQd3OITYEtsytac4eSyNLxEGkHFRfbQHow04QFefYGsZqhAwwRW4oHjvc3K05X9X2B_ATAfUwzF1Huzmh2bnjTCCPKXvcJZV4p_cqwyXXrt6n_R2fXE1W2dN8jcUp11FyV10hB06DqMYZ14vaM_W-mndrFlUaQHsX6LriiQz4fmF6IWWyI_Bdh8qFRBl8oXQo1yZYET8nPsoib6k_V2dINV3XljseW1"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-40 px-6">
+<div class="max-w-4xl mx-auto space-y-12">
+<!-- Progress Bar Section -->
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Step 1 of 3</span>
+<span class="font-headline font-bold text-primary">33% Complete</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="fluid-progress h-full bg-gradient-to-r from-primary via-primary-container to-secondary" style="width: 33.33%;"></div>
+</div>
+</div>
+<!-- Hero Header -->
+<div class="space-y-3">
+<h1 class="text-4xl md:text-5xl font-black tracking-tighter text-on-surface">What does your business do?</h1>
+<p class="text-on-surface-variant text-lg max-w-xl leading-relaxed">Select the category that best aligns with your primary operations to tailor your custom estimate.</p>
+</div>
+<!-- Industry Grid (Bento/Editorial Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Professional Services -->
+<div class="glass-card ghost-border group relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 hover:bg-surface-container-high/60">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">business_center</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">Professional Services</h3>
+<p class="text-sm text-on-surface-variant">Legal, accounting, consulting, or specialized expertise.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg border-2 border-outline-variant group-hover:border-primary transition-colors flex items-center justify-center">
+<!-- Selected state hidden by default -->
+</div>
+</div>
+</div>
+<!-- E-Commerce -->
+<div class="glass-card ghost-border group relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 hover:bg-surface-container-high/60 border-2 border-transparent">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">E-Commerce</h3>
+<p class="text-sm text-on-surface-variant">Online retail, digital goods, and marketplace platforms.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+</div>
+</div>
+<!-- Real Estate -->
+<div class="glass-card ghost-border group relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 hover:bg-surface-container-high/60">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">location_city</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">Real Estate</h3>
+<p class="text-sm text-on-surface-variant">Property management, brokerage, and development.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+</div>
+</div>
+<!-- Healthcare -->
+<div class="glass-card ghost-border group relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 hover:bg-surface-container-high/60">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">Healthcare</h3>
+<p class="text-sm text-on-surface-variant">Medical practices, wellness, and biotech innovations.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+</div>
+</div>
+<!-- Marketing Agency -->
+<div class="glass-card ghost-border group relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 hover:bg-surface-container-high/60">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">Marketing Agency</h3>
+<p class="text-sm text-on-surface-variant">Creative services, digital ads, and brand strategy.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+</div>
+</div>
+<!-- SaaS/Tech (Pre-selected for demonstration) -->
+<div class="glass-card relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 bg-surface-container-high ring-1 ring-primary/40 shadow-[0_0_30px_rgba(208,188,255,0.1)]">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">SaaS/Tech</h3>
+<p class="text-sm text-on-surface-variant">Software solutions, AI, and platform development.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg bg-tertiary flex items-center justify-center text-on-tertiary-container shadow-[0_0_15px_rgba(47,217,244,0.4)]">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+</div>
+</div>
+<!-- Construction -->
+<div class="glass-card ghost-border group relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 hover:bg-surface-container-high/60">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">construction</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">Construction</h3>
+<p class="text-sm text-on-surface-variant">Building, renovation, and infrastructure projects.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+</div>
+</div>
+<!-- Other -->
+<div class="glass-card ghost-border group relative p-6 rounded-xl cursor-pointer hover:scale-[1.01] transition-all duration-300 hover:bg-surface-container-high/60">
+<div class="flex items-start justify-between">
+<div class="space-y-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">more_horiz</span>
+</div>
+<div>
+<h3 class="font-bold text-lg text-on-surface">Other</h3>
+<p class="text-sm text-on-surface-variant">Something unique that doesn't fit the above.</p>
+</div>
+</div>
+<div class="w-6 h-6 rounded-lg border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center justify-between pt-12 border-t border-outline-variant/5">
+<button class="px-6 py-3 font-semibold text-on-surface-variant hover:text-white transition-colors flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+          Back
+        </button>
+<button class="px-10 py-4 rounded-xl font-bold text-on-primary-fixed bg-gradient-to-br from-primary to-primary-container shadow-[0_8px_20px_rgba(109,59,215,0.25)] hover:shadow-[0_12px_30px_rgba(109,59,215,0.4)] transition-all scale-100 hover:scale-[1.02] active:scale-95">
+          Continue
+        </button>
+</div>
+</div>
+</main>
+<!-- Footer predicted from JSON -->
+<footer class="fixed bottom-0 w-full z-40 bg-transparent">
+<div class="flex justify-between items-center w-full max-w-7xl mx-auto px-12 py-8 space-y-12 no-border">
+<div class="flex items-center gap-2 opacity-80 hover:opacity-100 transition-opacity">
+<span class="font-black text-[#e2e2e8]">DISSID</span>
+</div>
+<div class="flex items-center gap-8 font-inter text-xs uppercase tracking-widest text-[#cbc3d7]">
+<span class="text-[#cbc3d7]">Powered by DISSID</span>
+<a class="text-violet-400 hover:text-violet-300 transition-opacity" href="#">dissid.io</a>
+</div>
+</div>
+</footer>
+<!-- Background Decorative Glows -->
+<div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full pointer-events-none z-0"></div>
+</body></html>

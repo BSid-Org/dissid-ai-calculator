@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DISSID Estimator - Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#e2e2e8",
+              "surface-dim": "#111318",
+              "on-background": "#e2e2e8",
+              "on-primary-fixed": "#23005c",
+              "surface": "#111318",
+              "secondary": "#ffb0cd",
+              "secondary-fixed": "#ffd9e4",
+              "surface-tint": "#d0bcff",
+              "surface-bright": "#37393e",
+              "primary": "#d0bcff",
+              "on-primary-container": "#340080",
+              "primary-fixed-dim": "#d0bcff",
+              "on-secondary-container": "#ffbad3",
+              "tertiary-fixed": "#a2eeff",
+              "inverse-primary": "#6d3bd7",
+              "on-secondary": "#640039",
+              "on-primary-fixed-variant": "#5516be",
+              "on-error": "#690005",
+              "inverse-surface": "#e2e2e8",
+              "tertiary-container": "#009fb4",
+              "on-tertiary-container": "#002f36",
+              "primary-fixed": "#e9ddff",
+              "surface-container-high": "#282a2e",
+              "on-tertiary": "#00363e",
+              "inverse-on-surface": "#2f3035",
+              "on-secondary-fixed": "#3e0022",
+              "primary-container": "#a078ff",
+              "on-surface-variant": "#cbc3d7",
+              "error-container": "#93000a",
+              "surface-variant": "#333539",
+              "surface-container-low": "#1a1c20",
+              "tertiary": "#2fd9f4",
+              "on-tertiary-fixed": "#001f25",
+              "tertiary-fixed-dim": "#2fd9f4",
+              "secondary-fixed-dim": "#ffb0cd",
+              "outline-variant": "#494454",
+              "on-tertiary-fixed-variant": "#004e5a",
+              "error": "#ffb4ab",
+              "on-primary": "#3c0091",
+              "surface-container": "#1e2024",
+              "on-error-container": "#ffdad6",
+              "background": "#111318",
+              "outline": "#958ea0",
+              "surface-container-highest": "#333539",
+              "surface-container-lowest": "#0c0e12",
+              "on-secondary-fixed-variant": "#8c0053",
+              "secondary-container": "#aa0266"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { background-color: #0A0C10; }
+      .glass-card {
+        background: rgba(30, 32, 36, 0.4);
+        backdrop-filter: blur(24px);
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #d0bcff 0%, #ffb0cd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-glow {
+        background: radial-gradient(circle at center, rgba(208, 188, 255, 0.08) 0%, transparent 70%);
+      }
+    </style>
+</head>
+<body class="font-body text-on-surface antialiased selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#111318] shadow-[0_0_40px_rgba(208,188,255,0.06)]">
+<div class="flex flex-col items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex justify-between items-center w-full">
+<div class="text-xl font-bold tracking-tighter text-[#e2e2e8]">DISSID Estimator</div>
+<div class="hidden md:flex items-center space-x-8">
+<nav class="flex gap-8">
+<a class="font-inter tracking-tight font-semibold text-sm text-[#cbc3d7] hover:text-white transition-colors" href="#">Platform</a>
+<a class="font-inter tracking-tight font-semibold text-sm text-[#cbc3d7] hover:text-white transition-colors" href="#">Pricing</a>
+<a class="font-inter tracking-tight font-semibold text-sm text-white font-bold" href="#">Results</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-violet-400 cursor-pointer">help_outline</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="close-up portrait of professional user with neutral expression against soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ9WzhYyUUZTrhEq68-39CFWtiqucOTml5E7Bfy6dM30l4Jr7UClZYbrwGbP4Mcuu93bnk5RULn2eyey2Q7NJrkAFdN1lNEp5DLIiFN4Nm3uzMk2lcyzbLZK5ctasBqVabcPB5VTOuPlcdLlIefJrurrSuvjlBTgo8XYI0lCn7WK2zQ6QxCnAHtaKw_o3TqDfXVgJzXB4lJCQhSo0A39X02xa1W4jELwPcU1MBmcSEzKgLafAlcBVK_-aK2dW4qLx_9gIQYHZ01V1K"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-48 px-6 max-w-7xl mx-auto min-h-screen relative">
+<!-- Hero Section -->
+<section class="relative z-10 text-center mb-24">
+<div class="absolute inset-0 hero-glow -z-10 h-[500px]"></div>
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/10 mb-8">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse mr-2"></span>
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Calculation Complete</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-headline font-black tracking-tighter mb-6 leading-tight">
+                Estimated Annual Savings:<br/>
+<span class="gradient-text">$28,800</span>
+</h1>
+<!-- 3-Column Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+<div class="glass-card p-10 rounded-xl border border-outline-variant/5 shadow-[0_0_40px_rgba(208,188,255,0.03)] group transition-all duration-500 hover:border-primary/20">
+<div class="text-on-surface-variant text-sm font-label uppercase tracking-widest mb-2">Monthly Efficiency</div>
+<div class="text-4xl font-headline font-bold text-primary mb-2">$2,400/mo</div>
+<div class="text-xs text-on-surface-variant italic">Direct capital reinvestment potential</div>
+</div>
+<div class="glass-card p-10 rounded-xl border border-outline-variant/5 shadow-[0_0_40px_rgba(208,188,255,0.03)] group transition-all duration-500 hover:border-secondary/20">
+<div class="text-on-surface-variant text-sm font-label uppercase tracking-widest mb-2">Time Recovered</div>
+<div class="text-4xl font-headline font-bold text-secondary mb-2">45 hours</div>
+<div class="text-xs text-on-surface-variant italic">Equivalent to +1 week of focus</div>
+</div>
+<div class="glass-card p-10 rounded-xl border border-outline-variant/5 shadow-[0_0_40px_rgba(208,188,255,0.03)] group transition-all duration-500 hover:border-tertiary/20">
+<div class="text-on-surface-variant text-sm font-label uppercase tracking-widest mb-2">Value Efficiency</div>
+<div class="text-4xl font-headline font-bold text-tertiary mb-2">12x ROI</div>
+<div class="text-xs text-on-surface-variant italic">System multiplier against overhead</div>
+</div>
+</div>
+</section>
+<!-- Toggle Section -->
+<div class="flex justify-center items-center gap-4 mb-16">
+<span class="text-sm font-label text-on-surface-variant">Current Performance</span>
+<button class="relative w-12 h-6 rounded-full bg-surface-container-highest transition-colors focus:outline-none">
+<div class="absolute left-1 top-1 w-4 h-4 rounded-full bg-primary transition-transform translate-x-6"></div>
+</button>
+<span class="text-sm font-label text-on-surface">Compare with industry average</span>
+</div>
+<!-- Breakdown Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-32">
+<div>
+<h2 class="text-3xl font-headline font-bold mb-4">Operational Breakdown</h2>
+<p class="text-on-surface-variant mb-12 max-w-md">Precision analysis of your task distribution and the potential for automated optimization per vertical.</p>
+<div class="space-y-6">
+<!-- Task Card -->
+<div class="bg-surface-container p-6 rounded-xl group hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">support_agent</span>
+<h3 class="font-bold">Customer Support</h3>
+</div>
+<span class="text-tertiary font-mono text-sm">+85% Efficiency</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant mb-2">
+<span>Monthly Savings</span>
+<span class="text-on-surface font-semibold">$1,200</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[85%] rounded-full"></div>
+</div>
+</div>
+<!-- Task Card -->
+<div class="bg-surface-container p-6 rounded-xl group hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">leaderboard</span>
+<h3 class="font-bold">Lead Generation</h3>
+</div>
+<span class="text-tertiary font-mono text-sm">+60% Efficiency</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant mb-2">
+<span>Monthly Savings</span>
+<span class="text-on-surface font-semibold">$850</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[60%] rounded-full"></div>
+</div>
+</div>
+<!-- Task Card -->
+<div class="bg-surface-container p-6 rounded-xl group hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">data_usage</span>
+<h3 class="font-bold">Data Entry</h3>
+</div>
+<span class="text-tertiary font-mono text-sm">+95% Efficiency</span>
+</div>
+<div class="flex justify-between text-sm text-on-surface-variant mb-2">
+<span>Monthly Savings</span>
+<span class="text-on-surface font-semibold">$350</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary w-[95%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature Checklist Section -->
+<div class="bg-surface-container-low p-12 rounded-xl border border-outline-variant/10">
+<h2 class="text-3xl font-headline font-bold mb-8">What This Looks Like</h2>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="block font-bold mb-1">Autonomous Lead Routing</span>
+<span class="text-sm text-on-surface-variant">Instant qualification and assignment without manual oversight.</span>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="block font-bold mb-1">Unified Intelligence Layer</span>
+<span class="text-sm text-on-surface-variant">Real-time data synchronization across your entire tech stack.</span>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-tertiary mt-1" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<span class="block font-bold mb-1">Proactive Risk Mitigation</span>
+<span class="text-sm text-on-surface-variant">AI-driven spotting of operational bottlenecks before they occur.</span>
+</div>
+</li>
+</ul>
+<div class="mt-12 p-8 bg-surface-container rounded-xl border border-outline-variant/10 relative overflow-hidden group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity duration-700" data-alt="clean digital dashboard interface showing abstract growth charts and data metrics with a dark minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOHk2882_NRqIJzPX29Nk8e4KuXHOlGNV79j0i4IG8QBkh6L-sG7Fr0HgQCGq65BqZ6h8f5VqPoW1rROT--RX4wEUnRnHPyN4QW4VlhmNGqxbj4YIIZPXi-RYCtBhW1QfZpn4Fu7SwbswAO2mUnW6aOnF10zHmzZ7YPZ8whWR7AOuu9NIPDrF41jUaFhnEdTfP12R8dXCqCbsaMsBpQ9L2LKosU52Q_5g7hxwDi8XunfuDDFWrZITPW0BvLEWl6t3C4EWK0pZlU3Ji"/>
+<div class="relative z-10">
+<div class="text-xs font-label uppercase tracking-widest text-primary mb-2">Exclusive Insight</div>
+<p class="text-on-surface leading-relaxed italic">"By automating these 3 core verticals, your team can pivot from maintenance to 100% innovation-focused tasks within 60 days."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Reflection Section -->
+<section class="text-center mb-32 px-4 py-24 rounded-xl relative overflow-hidden">
+<div class="absolute inset-0 bg-surface-container-lowest -z-10"></div>
+<h2 class="text-3xl font-headline font-bold mb-4">What would you do with 45 extra hours?</h2>
+<p class="text-on-surface-variant mb-12">Time is the only asset we can't buy. Until now.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<div class="px-8 py-4 rounded-full bg-surface-container border border-outline-variant/10 text-on-surface hover:border-primary/40 transition-all cursor-default">
+                    Scale your sales engine
+                </div>
+<div class="px-8 py-4 rounded-full bg-surface-container border border-outline-variant/10 text-on-surface hover:border-primary/40 transition-all cursor-default">
+                    Focus on product R&amp;D
+                </div>
+<div class="px-8 py-4 rounded-full bg-surface-container border border-outline-variant/10 text-on-surface hover:border-primary/40 transition-all cursor-default">
+                    Spend time with family
+                </div>
+<div class="px-8 py-4 rounded-full bg-surface-container border border-outline-variant/10 text-on-surface hover:border-primary/40 transition-all cursor-default">
+                    Master a new vertical
+                </div>
+</div>
+</section>
+<!-- Final CTAs -->
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<button class="w-full md:w-auto px-12 py-5 rounded-full bg-gradient-to-r from-primary to-primary-container text-on-primary-fixed font-bold text-lg shadow-[0_0_40px_rgba(208,188,255,0.2)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+                Get Your Custom Plan
+            </button>
+<button class="w-full md:w-auto px-12 py-5 rounded-full border border-outline-variant hover:bg-surface-container transition-all font-bold text-on-surface-variant hover:text-on-surface">
+                Start Over
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full z-40 bg-transparent">
+<div class="max-w-7xl mx-auto px-12 py-8 flex justify-between items-center w-full bg-gradient-to-t from-[#0A0C10] to-transparent">
+<div class="font-inter text-xs uppercase tracking-widest text-[#cbc3d7]">
+                Powered by <span class="font-black text-[#e2e2e8]">DISSID</span>
+</div>
+<div class="flex gap-8">
+<a class="font-inter text-xs uppercase tracking-widest text-[#cbc3d7] hover:text-violet-300 transition-opacity opacity-80 hover:opacity-100" href="https://dissid.io">dissid.io</a>
+</div>
+</div>
+</footer>
+<!-- Decorative Particle / Noise Overlay -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[100]" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTT5F5h-dvvk0VJ3Mnl5uAg4lPwppRU4fR3-5hdrJeRwD_vv20kMgauwakf684WsWYy9MSMbjz-R_4UZv1gjmYFO4RDVbDqNeR_p677YpVq3pPzXN3XX9K2OPdar1RSlBsZwnf4sr2LYyCQgsXiyx37D2p-xlXWE7NJRTW4QmsHBQvnnBZC5PvVeEAelFPhQimvWvUbgDrbgrVFeR3P1K_ZC1fFjHhk2YJazlVqduVjPn3cHd90xQ33plvvePSHSAamwK4CUhBxkXo');"></div>
+</body></html>

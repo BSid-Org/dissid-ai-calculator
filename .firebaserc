@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "dis-sid"
+  },
+  "targets": {
+    "dis-sid": {
+      "hosting": {
+        "calculator": ["dissid-ai-calculator"]
+      }
+    }
+  }
+}
