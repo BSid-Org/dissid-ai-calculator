@@ -126,3 +126,20 @@ Brainstormer proposed a 5-scene script; Challenger fact-checked and struck 10 it
 - Commits: ef73362 (implementation), 6257a54 (review fixes), no-ff merged to main
 - Deployed: https://dissid.ai#what-i-build — live: what-i-build.mp4 1,619,372 B, poster 12,614 B, section id + heading + subtitle in prerendered HTML
 - New: WhatIBuild composition (5 scenes via Series), WhatIBuildVideo embed, 3 new tests (28 total)
+
+## Sprint 4 — Animated proof: metrics + architecture (2026-06-12)
+
+### Execution Summary
+
+Brainstormer proposed metrics band + diagram; Challenger fact-checked cv.md and struck invented sublabels ("Systems I've shipped"), the factually wrong "Sub-second Pipeline" label (cv says sub-3-second), dual count-up over-engineering, a false "framer can't do pathLength in static export" claim, and the deprecated motionValue.onChange API. **Orchestrator then caught the Challenger introducing its own honesty violations** (invented "400x speedup" math, a nonexistent "12% Engagement Lift", filler "5+ Years Shipped", and dropping two real proof points) and corrected the card list to the exact five cv.md metrics before dispatch. Implementer built MetricCounter (framer `animate()` + onUpdate, useInView once, reduced-motion instant), MetricsSection (5 glass cards: 400% counter / "4 hr → 3 sec" static / 60% counter / $2M+/mo counter / 20%→80% hybrid), ArchitectureFleet (3-node SVG: Orchestrator-Mac ↔ Agent Fleet-VPS ↔ Integrations, pulsing connectors per Sprint 1 idiom, inline SVG fontSize for 375px legibility ≥10.5px). Placement: metrics after Hero; #architecture section after explainer. Reviews: spec compliant first pass; quality APPROVED first pass (2 NITs only).
+
+### Self-Evaluation Metrics
+
+- **Success Criteria Met?**: Yes — scroll-triggered counters animate once on view with cv.md proof points only (live forbidden-string check: 0 hits); animated architecture diagram live; SVG legible at 375px (16px labels → 12px rendered); 65/65 tests; build green; deployed; live-verified.
+- **Edge Cases Handled**: useReducedMotion null first-paint (strict-equality gating, SSR renders 0 then animates); animation cleanup via controls.stop() on unmount; counter never retriggers (useInView once); desc text split to avoid circle overflow; no rotation anywhere.
+
+### Final Deliverable
+
+- Commit: 19cea6d, no-ff merged to main
+- Deployed: https://dissid.ai — "Proof of Scale" metrics band + "How It Runs" #architecture section live-verified (all 5 labels + 3 node labels in HTML, 0 forbidden strings)
+- New: MetricCounter, MetricsSection, ArchitectureFleet + 37 tests (65 total)
