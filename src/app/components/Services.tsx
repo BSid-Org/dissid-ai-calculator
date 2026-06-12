@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ServiceLoops from "./ServiceLoops";
 
 const services = [
   {
@@ -82,6 +83,7 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
+        <ServiceLoops />
       </div>
     </div>
   );
