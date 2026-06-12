@@ -5,8 +5,14 @@
   "targets": {
     "dis-sid": {
       "hosting": {
-        "calculator": ["dissid-ai-calculator"]
+        "calculator": [
+          "dissid-ai-calculator"
+        ],
+        "consultancy": [
+          "dissid-consultancy"
+        ]
       }
     }
-  }
+  },
+  "etags": {}
 }
