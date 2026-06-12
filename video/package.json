@@ -1,0 +1,21 @@
+{
+  "name": "dissid-service-loops",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render:fleet": "remotion render AgentFleet ../public/videos/agent-fleet.mp4 --codec=h264 --crf=28",
+    "render:mcp": "remotion render MCPDataFlow ../public/videos/mcp-data-flow.mp4 --codec=h264 --crf=28",
+    "still:fleet": "remotion still AgentFleet ../public/videos/agent-fleet-poster.jpg --frame=96",
+    "still:mcp": "remotion still MCPDataFlow ../public/videos/mcp-data-flow-poster.jpg --frame=120"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "typescript": "^5.5.3"
+  }
+}
