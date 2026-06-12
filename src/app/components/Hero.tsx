@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import HeroAgentSystem from "./HeroAgentSystem";
 
 export default function Hero() {
   return (
@@ -98,6 +99,16 @@ export default function Hero() {
           >
             LinkedIn
           </a>
+        </motion.div>
+
+        {/* Agent system visual */}
+        <motion.div
+          className="mt-10 flex justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+        >
+          <HeroAgentSystem />
         </motion.div>
       </div>
 
