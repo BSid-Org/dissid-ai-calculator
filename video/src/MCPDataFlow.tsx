@@ -44,6 +44,7 @@ interface PacketProps {
   color: string;
   startX: number;
   hubX: number;
+  hubY: number;
   endX: number;
   pathY: number;
   cycleOffset: number;
@@ -55,6 +56,7 @@ function Packet({
   color,
   startX,
   hubX,
+  hubY,
   endX,
   pathY,
   cycleOffset,
@@ -85,11 +87,15 @@ function Packet({
   const inPhase2 =
     cycleFrame >= PACKET_TRAVEL && cycleFrame < PACKET_TRAVEL * 2;
 
+  // Route through the hub: phase 1 converges input row -> hub center,
+  // phase 2 diverges hub center -> output row (follows the filament paths).
   const packetX = inPhase1
     ? startX + phase1Eased * (hubX - startX)
     : hubX + phase2Eased * (endX - hubX);
 
-  const packetY = inPhase2 ? pathY + phase2Eased * (outputY - pathY) : pathY;
+  const packetY = inPhase1
+    ? pathY + phase1Eased * (hubY - pathY)
+    : hubY + phase2Eased * (outputY - hubY);
 
   const visible = inPhase1 || inPhase2;
   const opacity = visible ? 1 : 0;
@@ -281,13 +287,14 @@ export const MCPDataFlow: React.FC = () => {
         </div>
       ))}
 
-      {/* Packets: input → hub */}
+      {/* Packets: input → hub → output */}
       {INPUTS.map((inp, i) => (
         <Packet
           key={`pkt-in-${i}`}
           color={inp.color}
           startX={inputX + 50}
           hubX={hubX}
+          hubY={height / 2}
           endX={outputX - 50}
           pathY={inp.y * height}
           outputY={OUTPUTS[i].y * height}

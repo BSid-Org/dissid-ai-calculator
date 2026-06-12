@@ -24,10 +24,14 @@ const CHIPS = [
   { label: "Data", laneIdx: 0 },
 ];
 
-// Each chip dispatch staggered: chip i launches at frame i*30
-const CHIP_DISPATCH_FRAME = 30;
+// Each chip dispatch staggered: chip i launches at frame i*24.
+// INVARIANT: the LAST chip must land (and its checkmark finish fading in)
+// before RESET_START so nothing is mid-flight at the loop seam:
+// last dispatch = (CHIPS.length - 1) * 24 = 96; arrival = 96 + 64 = 160;
+// checkmark fade-in ends at 164 < RESET_START (168).
+const CHIP_DISPATCH_FRAME = 24;
 // Travel duration in frames
-const TRAVEL_FRAMES = 80;
+const TRAVEL_FRAMES = 64;
 // Fade-out / reset: last 24 frames (frames 168-191)
 const RESET_START = 168;
 const RESET_END = 192;
@@ -143,7 +147,9 @@ function Chip({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            opacity: travelOpacity,
+            // resetFade is a safety net: travel completes before
+            // RESET_START by the dispatch-timing invariant above.
+            opacity: travelOpacity * resetFade,
             fontFamily: brand.fontBody,
             fontSize: 13,
             fontWeight: 700,
