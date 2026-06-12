@@ -60,6 +60,31 @@ describe("ServiceLoops", () => {
     });
   });
 
+  describe("reduced motion: false, inView: false", () => {
+    beforeEach(() => {
+      vi.mocked(FramerMotion.useReducedMotion).mockReturnValue(false);
+      vi.mocked(FramerMotion.useInView).mockReturnValue(false);
+    });
+
+    it("renders no <video> element", () => {
+      const { container } = render(<ServiceLoops />);
+      const videos = container.querySelectorAll("video");
+      expect(videos).toHaveLength(0);
+    });
+
+    it("renders both poster <img> placeholders", () => {
+      const { container } = render(<ServiceLoops />);
+      const imgs = container.querySelectorAll("img");
+      expect(imgs).toHaveLength(2);
+      expect(imgs[0].getAttribute("src")).toBe(
+        "/videos/agent-fleet-poster.jpg",
+      );
+      expect(imgs[1].getAttribute("src")).toBe(
+        "/videos/mcp-data-flow-poster.jpg",
+      );
+    });
+  });
+
   describe("reduced motion: false, inView: true", () => {
     beforeEach(() => {
       vi.mocked(FramerMotion.useReducedMotion).mockReturnValue(false);

@@ -22,7 +22,11 @@ const OUTPUTS = [
   { label: "State", color: brand.tertiary, y: 0.8 },
 ];
 
-// Packet timing: each input sends a packet every 80 frames, staggered
+// Packet timing: each input sends a packet every 80 frames, staggered.
+// INVARIANT: MCP_FRAMES must be an exact multiple of PACKET_CYCLE so the
+// packet position modulo wraps continuously across the loop boundary
+// (frame MCP_FRAMES-1 -> frame 0) — packets mid-transit at the seam
+// resume at the matching position instead of vanishing.
 const PACKET_CYCLE = 80;
 const PACKET_TRAVEL = 36; // frames to cross half the screen
 // Phase 1: input → hub (0..PACKET_TRAVEL frames within cycle)
@@ -177,15 +181,20 @@ export const MCPDataFlow: React.FC = () => {
     });
   };
 
-  // Output fade / input relight for seamless loop
-  const outputFade = interpolate(frame, [RESET_START, RESET_END - 4], [1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const inputRelight = interpolate(
+  // Seamless loop: block opacities must match at frame 0 and the final
+  // frame. Outputs are dark at BOTH ends (fade in at the start, fade out
+  // during the reset); inputs are fully lit at BOTH ends (settle to a
+  // working dim state, then relight during the reset).
+  const outputFade = interpolate(
     frame,
-    [RESET_START + 6, RESET_END - 2],
-    [0, 1],
+    [0, 16, RESET_START, RESET_END - 4],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
+  const inputOpacity = interpolate(
+    frame,
+    [0, 16, RESET_START + 6, RESET_END - 2],
+    [1, 0.7, 0.7, 1],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
 
@@ -239,7 +248,7 @@ export const MCPDataFlow: React.FC = () => {
 
       {/* Input blocks */}
       {INPUTS.map((inp, i) => (
-        <div key={`in-${i}`} style={{ opacity: 0.6 + inputRelight * 0.4 }}>
+        <div key={`in-${i}`} style={{ opacity: inputOpacity }}>
           <Block
             x={inputX}
             y={inp.y * height}
