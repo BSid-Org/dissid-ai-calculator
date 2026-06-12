@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks";
 import Services from "./components/Services";
 import Calculator from "./components/Calculator";
+import WhatIBuildVideo from "./components/WhatIBuildVideo";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import ErrorBoundaryWrapper from "./components/ErrorBoundaryWrapper";
@@ -29,6 +30,19 @@ export default function Home() {
             </p>
           </div>
           <Calculator />
+        </section>
+        <section id="what-i-build" className="py-20">
+          <div className="text-center mb-8 px-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+              What I Build
+            </h2>
+            <p className="text-[var(--text-muted)] max-w-lg mx-auto">
+              A 30-second walkthrough of my core capabilities
+            </p>
+          </div>
+          <div className="max-w-3xl mx-auto px-4">
+            <WhatIBuildVideo />
+          </div>
         </section>
         <section id="about">
           <About />
