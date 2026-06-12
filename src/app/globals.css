@@ -15,6 +15,7 @@
   --text-muted: #958ea0;
   --surface-lowest: #0c0e12;
   --glow-sm: drop-shadow(0 0 8px rgba(208, 188, 255, 0.4));
+  --glow-md: drop-shadow(0 0 12px rgba(208, 188, 255, 0.6));
 }
 
 body {

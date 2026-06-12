@@ -3,19 +3,47 @@ import { render, screen } from "@testing-library/react";
 import * as FramerMotion from "framer-motion";
 import HeroAgentSystem from "../HeroAgentSystem";
 
-// Mock framer-motion to avoid animation-related issues in jsdom
+// Framer-only props that must not leak onto raw DOM elements
+type MotionProps = {
+  initial?: unknown;
+  animate?: unknown;
+  transition?: unknown;
+};
+
+// Mock framer-motion to avoid animation-related issues in jsdom.
+// Destructure framer-only props out so they don't reach the DOM.
 vi.mock("framer-motion", () => ({
   motion: {
-    div: ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    div: ({
+      children,
+      initial: _initial,
+      animate: _animate,
+      transition: _transition,
+      ...props
+    }: React.HTMLAttributes<HTMLDivElement> & MotionProps) => (
       <div {...props}>{children}</div>
     ),
-    circle: (props: React.SVGProps<SVGCircleElement>) => <circle {...props} />,
-    line: (props: React.SVGProps<SVGLineElement>) => <line {...props} />,
+    circle: ({
+      initial: _initial,
+      animate: _animate,
+      transition: _transition,
+      ...props
+    }: React.SVGProps<SVGCircleElement> & MotionProps) => <circle {...props} />,
+    line: ({
+      initial: _initial,
+      animate: _animate,
+      transition: _transition,
+      ...props
+    }: React.SVGProps<SVGLineElement> & MotionProps) => <line {...props} />,
   },
   useReducedMotion: vi.fn(() => false),
 }));
 
 describe("HeroAgentSystem", () => {
+  beforeEach(() => {
+    vi.mocked(FramerMotion.useReducedMotion).mockReturnValue(false);
+  });
+
   it("renders without crashing", () => {
     const { container } = render(<HeroAgentSystem />);
     expect(container.firstChild).toBeTruthy();

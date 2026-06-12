@@ -88,7 +88,7 @@ export default function HeroAgentSystem() {
           r={20}
           fill="var(--primary)"
           style={{
-            filter: "drop-shadow(0 0 12px rgba(208, 188, 255, 0.6))",
+            filter: "var(--glow-md)",
           }}
           initial={prefersReducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
