@@ -6,12 +6,16 @@ import { brand } from "./brand";
 
 // Total: 720 frames (30s at 24fps)
 // Scene breakdown:
-//   Scene 1 Intro:        144 frames (6s)
-//   Scene 2 AgentFleet:   216 frames (9s) — FLEET_FRAMES=192, fleet loop resets at 192
-//                          and runs 24 frames into its second cycle at scene end (seamless)
-//   Scene 3 MCPDataFlow:  240 frames (10s) — exactly MCP_FRAMES ✓
-//   Scene 4 ProofPoints:   72 frames (3s)
-//   Scene 5 Outro:         48 frames (2s)
+//   Scene 1 Intro:        144 frames (6s)   — absolute 0–143
+//   Scene 2 AgentFleet:   192 frames (8s)   — absolute 144–335, exactly FLEET_FRAMES.
+//                          AgentFleet does NOT wrap useCurrentFrame past 192 (it
+//                          clamps in its reset state: chips/bars/checkmarks at
+//                          opacity 0), so the scene must not outlive FLEET_FRAMES.
+//                          The spare 24 frames went to ProofPoints — the most
+//                          information-dense scene benefits from reading time.
+//   Scene 3 MCPDataFlow:  240 frames (10s)  — absolute 336–575, exactly MCP_FRAMES ✓
+//   Scene 4 ProofPoints:   96 frames (4s)   — absolute 576–671
+//   Scene 5 Outro:         48 frames (2s)   — absolute 672–719
 
 // ─── Scene 1: Intro ──────────────────────────────────────────────────────────
 
@@ -63,48 +67,57 @@ function Intro() {
   );
 }
 
-// ─── Scene 2: AgentFleet with overlay ────────────────────────────────────────
+// ─── Shared scene overlay ────────────────────────────────────────────────────
 
-function AgentFleetReuse() {
+// Center-top caption: appears at 2s (48 frames) into its Sequence, fades in
+// over 1s (24 frames). Computes its own fade from useCurrentFrame, which is
+// relative to the enclosing Series.Sequence.
+function SceneOverlay({ text }: { text: string }) {
   const frame = useCurrentFrame();
 
-  // Overlay appears at 2s (48 frames), fades in over 1s (24 frames)
   const overlayOpacity = interpolate(frame, [48, 72], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
   return (
-    <AbsoluteFill>
-      <AgentFleet />
-      {/* Overlay text: center-top */}
+    <div
+      style={{
+        position: "absolute",
+        top: 32,
+        left: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "center",
+        opacity: overlayOpacity,
+        pointerEvents: "none",
+      }}
+    >
       <div
         style={{
-          position: "absolute",
-          top: 32,
-          left: 0,
-          right: 0,
-          display: "flex",
-          justifyContent: "center",
-          opacity: overlayOpacity,
-          pointerEvents: "none",
+          fontFamily: brand.fontBody,
+          fontSize: 24,
+          fontWeight: 600,
+          color: brand.ink,
+          background: "rgba(17,19,24,0.7)",
+          padding: "8px 20px",
+          borderRadius: 8,
+          letterSpacing: 0.3,
         }}
       >
-        <div
-          style={{
-            fontFamily: brand.fontBody,
-            fontSize: 24,
-            fontWeight: 600,
-            color: brand.ink,
-            background: "rgba(17,19,24,0.7)",
-            padding: "8px 20px",
-            borderRadius: 8,
-            letterSpacing: 0.3,
-          }}
-        >
-          Agent fleets run in parallel
-        </div>
+        {text}
       </div>
+    </div>
+  );
+}
+
+// ─── Scene 2: AgentFleet with overlay ────────────────────────────────────────
+
+function AgentFleetReuse() {
+  return (
+    <AbsoluteFill>
+      <AgentFleet />
+      <SceneOverlay text="Agent fleets run in parallel" />
     </AbsoluteFill>
   );
 }
@@ -112,45 +125,10 @@ function AgentFleetReuse() {
 // ─── Scene 3: MCPDataFlow with overlay ───────────────────────────────────────
 
 function MCPDataFlowReuse() {
-  const frame = useCurrentFrame();
-
-  // Overlay appears at 2s (48 frames), fades in over 1s (24 frames)
-  const overlayOpacity = interpolate(frame, [48, 72], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
   return (
     <AbsoluteFill>
       <MCPDataFlow />
-      {/* Overlay text: center-top */}
-      <div
-        style={{
-          position: "absolute",
-          top: 32,
-          left: 0,
-          right: 0,
-          display: "flex",
-          justifyContent: "center",
-          opacity: overlayOpacity,
-          pointerEvents: "none",
-        }}
-      >
-        <div
-          style={{
-            fontFamily: brand.fontBody,
-            fontSize: 24,
-            fontWeight: 600,
-            color: brand.ink,
-            background: "rgba(17,19,24,0.7)",
-            padding: "8px 20px",
-            borderRadius: 8,
-            letterSpacing: 0.3,
-          }}
-        >
-          MCP integrations connect any tool
-        </div>
-      </div>
+      <SceneOverlay text="MCP integrations connect any tool" />
     </AbsoluteFill>
   );
 }
@@ -165,7 +143,8 @@ const PROOF_CARDS = [
 ];
 
 // Stagger: 4 frames apart (cards 0–3 start at frames 0, 4, 8, 12)
-// With an 8-frame fade, card 4 fully opaque at scene frame 20 = absolute 620 ✓
+// With an 8-frame fade, card 4 fully opaque at scene frame 20 = absolute 596
+// (scene starts at absolute 576) — well before the frame-620 spot-check ✓
 const STAGGER_FRAMES = 4;
 // Each card fades in over 8 frames then stays visible
 const CARD_FADE_FRAMES = 8;
@@ -313,13 +292,13 @@ export const WhatIBuild: React.FC = () => (
       <Series.Sequence durationInFrames={144}>
         <Intro />
       </Series.Sequence>
-      <Series.Sequence durationInFrames={216}>
+      <Series.Sequence durationInFrames={192}>
         <AgentFleetReuse />
       </Series.Sequence>
       <Series.Sequence durationInFrames={240}>
         <MCPDataFlowReuse />
       </Series.Sequence>
-      <Series.Sequence durationInFrames={72}>
+      <Series.Sequence durationInFrames={96}>
         <ProofPointsCards />
       </Series.Sequence>
       <Series.Sequence durationInFrames={48}>
