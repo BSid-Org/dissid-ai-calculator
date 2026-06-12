@@ -3,12 +3,6 @@
 import { motion } from "framer-motion";
 
 export default function Hero() {
-  const handleScroll = () => {
-    document
-      .getElementById("calculator")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       {/* Animated gradient background */}
@@ -48,7 +42,7 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <p className="text-sm uppercase tracking-widest text-[var(--text-muted)] font-bold mb-6">
-            AI Automation for Small Businesses
+            Siddhant Badola · Kitchener-Waterloo
           </p>
         </motion.div>
 
@@ -58,9 +52,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
         >
-          <span className="gradient-text">AI Agents</span> That Run Your{" "}
+          Senior <span className="gradient-text">AI / Agentic Systems</span>{" "}
           <br className="hidden sm:block" />
-          Business While You Sleep
+          Engineer
         </motion.h1>
 
         <motion.p
@@ -69,8 +63,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
         >
-          We build custom AI automation that cuts operational costs by 40-70%
-          for small businesses in Kitchener-Waterloo and beyond.
+          I build production agent fleets, MCP integrations, and AI hardware.
+          Open to full-time and fractional engagements.
         </motion.p>
 
         <motion.div
@@ -79,20 +73,30 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
         >
-          <button
-            onClick={handleScroll}
+          <a
+            href="mailto:siddhant@dissid.ca?subject=Hiring%20Inquiry"
             className="gradient-btn rounded-xl px-8 py-4 text-base font-bold flex items-center gap-2"
           >
-            See Your Savings
+            Hire Me
             <span className="material-symbols-outlined text-lg">
               arrow_forward
             </span>
-          </button>
+          </a>
           <a
-            href="mailto:siddhant@dissid.ca?subject=Free%20AI%20Assessment"
+            href="https://github.com/sidhunt"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-xl border border-[var(--border)] px-8 py-4 text-base font-semibold text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-active)] transition-all"
           >
-            Book Free Assessment
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/sbadola5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-xl border border-[var(--border)] px-8 py-4 text-base font-semibold text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)] hover:border-[var(--border-active)] transition-all"
+          >
+            LinkedIn
           </a>
         </motion.div>
       </div>

@@ -4,28 +4,32 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "Customer Support AI",
-    icon: "support_agent",
-    description: "24/7 intelligent response handling",
-    savings: "Save $2,000-4,000/mo",
-  },
-  {
-    title: "Document Automation",
-    icon: "description",
-    description: "Contracts, proposals, invoices on autopilot",
-    savings: "Save $1,500-3,000/mo",
-  },
-  {
-    title: "Lead Generation AI",
-    icon: "trending_up",
-    description: "Automated prospecting and qualification",
-    savings: "Save $2,500-5,000/mo",
-  },
-  {
-    title: "Custom Agent Development",
+    title: "Agentic Fleets & MCP Servers",
     icon: "auto_awesome",
-    description: "Bespoke AI agents for unique workflows",
-    savings: "Starting at $3,000",
+    description:
+      "Multi-agent orchestration, MCP integrations, task routing across LLM providers",
+    savings: "Claude Code · OpenAI · self-hosted",
+  },
+  {
+    title: "AI Hardware",
+    icon: "memory",
+    description:
+      "DISSID scanner-shredder: scan-before-shred device, provisional patent, manufacturing SOW",
+    savings: "Founder · dissid.ca",
+  },
+  {
+    title: "Voice & Computer Vision",
+    icon: "support_agent",
+    description:
+      "Voice pipelines (TTS/STT, wake-word), on-device CV with 400% inference speedups",
+    savings: "Production-deployed",
+  },
+  {
+    title: "LLMOps & Cost Engineering",
+    icon: "trending_up",
+    description:
+      "Provider routing, token-budget systems, observability — real systems, measured savings",
+    savings: "Kafka · FastAPI · Firebase",
   },
 ];
 
@@ -41,11 +45,11 @@ export default function Services() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm uppercase tracking-widest text-[var(--text-muted)] font-bold mb-4">
-            What We Build
+            What I Build
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            AI Solutions That{" "}
-            <span className="gradient-text">Pay for Themselves</span>
+            Production AI Systems,{" "}
+            <span className="gradient-text">Not Demos</span>
           </h2>
         </motion.div>
 

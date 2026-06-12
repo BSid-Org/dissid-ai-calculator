@@ -22,10 +22,10 @@ export default function Home() {
         <section id="calculator" className="py-16">
           <div className="text-center mb-8 px-4">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
-              Calculate Your Savings
+              Live Demo: AI Savings Calculator
             </h2>
             <p className="text-[var(--text-muted)] max-w-lg mx-auto">
-              See exactly how much AI automation could save your business
+              An interactive tool I designed and shipped — try it
             </p>
           </div>
           <Calculator />

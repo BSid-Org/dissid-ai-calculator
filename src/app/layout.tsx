@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DISSID — AI Automation for Small Businesses",
+  title: "Siddhant Badola — Senior AI / Agentic Systems Engineer",
   description:
-    "Custom AI agents that cut operational costs by 40-70%. Serving businesses in Kitchener-Waterloo and across Ontario.",
+    "Production agent fleets, MCP integrations, voice/vision pipelines, and AI hardware. Open to full-time and fractional engagements.",
   openGraph: {
-    title: "DISSID — AI Automation for Small Businesses",
+    title: "Siddhant Badola — Senior AI / Agentic Systems Engineer",
     description:
-      "Custom AI agents that cut operational costs by 40-70%. Serving businesses in Kitchener-Waterloo and across Ontario.",
+      "Production agent fleets, MCP integrations, voice/vision pipelines, and AI hardware. Open to full-time and fractional engagements.",
     url: "https://dissid.ai",
     siteName: "DISSID",
     type: "website",

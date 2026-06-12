@@ -59,10 +59,16 @@ export default function About() {
               </p>
 
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6">
-                Based in Kitchener-Waterloo, serving businesses across Ontario.
-                I build the AI agents myself — no outsourcing, no fluff. Every
-                solution is tailored to your specific workflows and designed to
-                deliver measurable ROI.
+                Based in Kitchener-Waterloo. I ship production systems
+                end-to-end — agent fleets, MCP servers, voice and vision
+                pipelines, and AI hardware. Founder of{" "}
+                <a
+                  href="https://dissid.ca"
+                  className="text-[var(--primary)] hover:underline font-semibold"
+                >
+                  DISSID
+                </a>{" "}
+                (scan-before-shred device, provisional patent, raising seed).
               </p>
 
               {/* Skills */}

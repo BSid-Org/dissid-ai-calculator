@@ -57,7 +57,7 @@ export default function Navbar() {
             onClick={() => handleNav("#calculator")}
             className="gradient-btn rounded-lg px-5 py-2 text-sm font-bold"
           >
-            Get Started
+            Hire Me
           </button>
         </div>
 
@@ -89,7 +89,7 @@ export default function Navbar() {
             onClick={() => handleNav("#calculator")}
             className="w-full gradient-btn rounded-lg px-5 py-3 text-sm font-bold mt-2"
           >
-            Get Started
+            Hire Me
           </button>
         </div>
       )}

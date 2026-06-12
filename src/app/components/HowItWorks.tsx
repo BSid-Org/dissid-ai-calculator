@@ -5,24 +5,24 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Assess",
+    title: "Define Done First",
     icon: "query_stats",
     description:
-      "We analyze your operations to find the highest-ROI automation opportunities",
+      "Verifiable goals before code — assumptions stated, success criteria explicit",
   },
   {
     number: "02",
-    title: "Build",
+    title: "Ship in Loops",
     icon: "code",
     description:
-      "Custom AI agents built specifically for your workflows and tools",
+      "Git-iterated sprints with tests as the gate — build, verify, commit, repeat",
   },
   {
     number: "03",
-    title: "Deploy",
+    title: "Verify in Production",
     icon: "rocket_launch",
     description:
-      "Go live in weeks, not months. We handle integration and training",
+      "Live checks on real deployments, honest reporting — no demo-ware",
   },
 ];
 
@@ -38,10 +38,10 @@ export default function HowItWorks() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm uppercase tracking-widest text-[var(--text-muted)] font-bold mb-4">
-            How It Works
+            How I Work
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            From Assessment to <span className="gradient-text">Automation</span>
+            Engineering <span className="gradient-text">Discipline</span>
           </h2>
         </motion.div>
 
