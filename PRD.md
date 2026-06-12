@@ -75,3 +75,20 @@ You must execute each sprint by stepping through the following sequential phases
 # PROGRESS LOG
 
 <!-- Sprint reports appended below in REQUIRED OUTPUT FORMAT -->
+
+## Sprint 1 — Visual foundation + Hero motion (2026-06-12)
+
+### Execution Summary
+
+Brainstormer proposed 3 concepts; Challenger selected "agent system" hub-and-radial SVG and killed 360° rotation (WCAG 2.3.3 vestibular risk) and SVG feGaussianBlur (mobile GPU cost) in favor of CSS drop-shadow. Implementer built `HeroAgentSystem.tsx` (1 center + 5 radial nodes + 5 pulsing connector lines, Framer Motion, useReducedMotion fallback) + 8 vitest tests + `--glow-sm`/`--glow-md` tokens, embedded in Hero below CTAs. Spec review: compliant first pass. Quality review: 3 IMPORTANT fixes required (test mock prop leak, un-reset useReducedMotion mock, inline glow → token) — fixed in 94a4c2e, re-review APPROVED.
+
+### Self-Evaluation Metrics
+
+- **Success Criteria Met?**: Yes — animated agent-network visual live in hero; tokens added; reduced-motion fallback (static 0.5-opacity lines, instant nodes); 19/19 tests green; build green; deployed; live-verified.
+- **Edge Cases Handled**: prefers-reduced-motion (static render); SSR/hydration safety (useReducedMotion null first paint + initial={false}); caption hidden <640px; SVG aria-hidden with visible text caption; mobile sizing 240px vs 320px desktop.
+
+### Final Deliverable
+
+- Commits: c7b9631 (implementation), 94a4c2e (review fixes), merged to main via no-ff merge
+- Deployed: https://dissid.ai (hosting:consultancy, dis-sid)
+- Live-verified: prerendered HTML contains 1×r=20 center, 5×r=12 nodes, 5 lines, "Agents working in parallel" caption, --glow-sm/--glow-md tokens
