@@ -109,3 +109,20 @@ Brainstormer proposed 10 decisions; Challenger fact-checked and struck 6 (fabric
 - Commits: dff8f01 (implementation), 8217194 + b960fd3 (review fixes), no-ff merged to main
 - Deployed: https://dissid.ai — live assets verified byte-exact: agent-fleet.mp4 409,942 B; mcp-data-flow.mp4 491,313 B; posters 28,211 / 21,370 B; both captions in prerendered HTML
 - New: `video/` Remotion package (committed inline, sources + bun.lock), `ServiceLoops.tsx`, 6 new tests (25 total)
+
+## Sprint 3 — ~30s hero explainer (2026-06-12)
+
+### Execution Summary
+
+Brainstormer proposed a 5-scene script; Challenger fact-checked and struck 10 items: scene math that summed to 21s not 30s; "$2M+ saved" misstating the cv.md "revenue impact" proof point (honesty); "You run on humans. Slow. Expensive." copy that insulted the hiring-manager audience (reframed); a 360° monogram spin (violates Sprint 1 vestibular ruling); a nonexistent portrait asset; SFX-vs-silence contradiction; custom VideoPlayer (over-engineered → native controls); jsdom-impossible tests; transcript link with no transcript. Implementer built `WhatIBuild` composition (720f/30s @24fps 1280×720: Intro → AgentFleet reuse → MCPDataFlow reuse → 4 proof cards → CTA), `WhatIBuildVideo.tsx` embed (3-state, native controls, NO autoplay), page section after Calculator. Reviews: spec compliant first pass; quality review flagged a CRITICAL fleet-scene overrun (216f sequence vs 192f component → frozen final second) — implementer CONFIRMED via boundary stills (his own "second cycle" rationale was wrong), fixed by trimming fleet to 192f and extending proof cards to 96f; SceneOverlay extracted to kill duplication. Re-review APPROVED with verified Series/stagger/fade arithmetic.
+
+### Self-Evaluation Metrics
+
+- **Success Criteria Met?**: Yes — 30s explainer telling agents → tools → outcomes; 1.62 MB (≤4 MB); user-initiated native controls, no autoplay/loop; 6 scene stills spot-checked post-fix; 28/28 tests; build green; deployed; live-verified.
+- **Edge Cases Handled**: AgentFleet clamp-past-192 behavior discovered and designed around (documented in comment); proof-card stagger keeps all 4 metrics readable ≥3.2s; reduced-motion → content poster with alt text (not aria-hidden — it's content); poster frame inside unchanged intro so timeline shift didn't invalidate it; copy honesty audit (exact cv.md phrasing only).
+
+### Final Deliverable
+
+- Commits: ef73362 (implementation), 6257a54 (review fixes), no-ff merged to main
+- Deployed: https://dissid.ai#what-i-build — live: what-i-build.mp4 1,619,372 B, poster 12,614 B, section id + heading + subtitle in prerendered HTML
+- New: WhatIBuild composition (5 scenes via Series), WhatIBuildVideo embed, 3 new tests (28 total)
