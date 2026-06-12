@@ -92,3 +92,20 @@ Brainstormer proposed 3 concepts; Challenger selected "agent system" hub-and-rad
 - Commits: c7b9631 (implementation), 94a4c2e (review fixes), merged to main via no-ff merge
 - Deployed: https://dissid.ai (hosting:consultancy, dis-sid)
 - Live-verified: prerendered HTML contains 1×r=20 center, 5×r=12 nodes, 5 lines, "Agents working in parallel" caption, --glow-sm/--glow-md tokens
+
+## Sprint 2 — Remotion package + 2 ambient loops (2026-06-12)
+
+### Execution Summary
+
+Brainstormer proposed 10 decisions; Challenger fact-checked and struck 6 (fabricated "sources too large" submodule rationale — dissid-source commits Remotion sources inline; nonexistent useMediaQuery hook — repo uses framer-motion useReducedMotion; Loop A radial-hub narrative — literal duplicate of Sprint 1 hero SVG, replaced with swimlane dispatch board; 1080p downsized to 720p; next/dynamic + hand-rolled IntersectionObserver replaced by framer useInView). Implementer built `video/` Remotion package (React 18 isolated, 24fps, 1280×720) with AgentFleet (192f swimlane board) + MCPDataFlow (240f 3→hub→3 pipeline), rendered both ≤500 KB, embedded via `ServiceLoops.tsx` (3-state: reduced→poster, off-screen→poster, in-view→video). Reviews: spec compliant first pass; quality review found 4 blocking issues — packets bypassing the hub (dead Y-lerp), chip-4 mid-flight seam cut, block opacity pops at the loop seam, untested lazy-load state — fixed across 8217194 + b960fd3 with still-based seam verification (frame 239≈0, 191≈0), re-review APPROVED. Reviewer initially mis-flagged packet modulo wrap as a cutoff; implementer refuted with boundary stills and reviewer retracted.
+
+### Self-Evaluation Metrics
+
+- **Success Criteria Met?**: Yes — both loops 8s/10s, 410 KB + 491 KB (≤2 MB each); lazy in-view loading; autoplay+muted+loop+playsInline+poster; above-fold weight unchanged (videos load on scroll only); 25/25 tests; build green; deployed; live-verified.
+- **Edge Cases Handled**: seamless loop invariants (MCP_FRAMES multiple of PACKET_CYCLE, last chip arrival < RESET_START — both documented in comments); reduced-motion → static poster full opacity; SSR first-paint (useReducedMotion null → poster, no hydration mismatch); aspect-video prevents layout shift on poster→video swap; jsdom muted-property quirk in tests.
+
+### Final Deliverable
+
+- Commits: dff8f01 (implementation), 8217194 + b960fd3 (review fixes), no-ff merged to main
+- Deployed: https://dissid.ai — live assets verified byte-exact: agent-fleet.mp4 409,942 B; mcp-data-flow.mp4 491,313 B; posters 28,211 / 21,370 B; both captions in prerendered HTML
+- New: `video/` Remotion package (committed inline, sources + bun.lock), `ServiceLoops.tsx`, 6 new tests (25 total)
