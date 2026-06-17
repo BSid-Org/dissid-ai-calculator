@@ -6,20 +6,16 @@ import ServiceLoops from "./ServiceLoops";
 const services = [
   {
     title: "Agentic Fleets & MCP Servers",
+    subtext:
+      "AI that does multi-step work for you — wired into the tools you already use.",
     icon: "auto_awesome",
     description:
       "Multi-agent orchestration, MCP integrations, task routing across LLM providers",
     savings: "Claude Code · OpenAI · self-hosted",
   },
   {
-    title: "AI Hardware",
-    icon: "memory",
-    description:
-      "DISSID scanner-shredder: scan-before-shred device, provisional patent, manufacturing SOW",
-    savings: "Founder · dissid.ca",
-  },
-  {
     title: "Voice & Computer Vision",
+    subtext: "Talk-to-it interfaces and on-device image understanding.",
     icon: "support_agent",
     description:
       "Voice pipelines (TTS/STT, wake-word), on-device CV with 400% inference speedups",
@@ -27,6 +23,7 @@ const services = [
   },
   {
     title: "LLMOps & Cost Engineering",
+    subtext: "Make your AI features fast, reliable, and cheap to run.",
     icon: "trending_up",
     description:
       "Provider routing, token-budget systems, observability — real systems, measured savings",
@@ -72,6 +69,9 @@ export default function Services() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold mb-1">{service.title}</h3>
+                  <p className="text-xs text-[var(--text-muted)] mb-2">
+                    {service.subtext}
+                  </p>
                   <p className="text-sm text-[var(--text-secondary)] mb-3">
                     {service.description}
                   </p>

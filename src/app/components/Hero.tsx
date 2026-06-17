@@ -1,38 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import HeroAgentSystem from "./HeroAgentSystem";
+import { BOOKING_URL, BOOKING_MAILTO } from "../lib/booking";
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 -z-10">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full opacity-20 blur-[120px]"
+      {/* Animated gradient background — CSS keyframes (compositor, off main thread).
+          Disabled under prefers-reduced-motion via globals.css. */}
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <div
+          className="hero-blob hero-blob-1"
           style={{ background: "var(--primary)" }}
-          animate={{
-            x: [0, 60, -40, 0],
-            y: [0, -40, 60, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-15 blur-[120px]"
+        <div
+          className="hero-blob hero-blob-2"
           style={{ background: "var(--secondary)" }}
-          animate={{
-            x: [0, -50, 30, 0],
-            y: [0, 50, -30, 0],
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full opacity-10 blur-[100px]"
+        <div
+          className="hero-blob hero-blob-3"
           style={{ background: "var(--tertiary)" }}
-          animate={{
-            scale: [1, 1.3, 1],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
@@ -59,14 +46,30 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-10"
+          className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
         >
-          I build production agent fleets, MCP integrations, and AI hardware.
-          Open to full-time and fractional engagements.
+          I build production agent fleets, MCP integrations, and AI systems that
+          ship. Open to full-time and fractional engagements.
         </motion.p>
+
+        {/* Availability signal — static, no animation */}
+        <motion.div
+          className="mb-10 flex justify-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.38, ease: "easeOut" }}
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface-lowest)] px-4 py-1.5 text-sm font-semibold text-[var(--text-secondary)]">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 motion-safe:animate-ping" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-400" />
+            </span>
+            Available for fractional &amp; contract work now
+          </span>
+        </motion.div>
 
         <motion.div
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
@@ -75,10 +78,12 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
         >
           <a
-            href="mailto:siddhant@dissid.ca?subject=Hiring%20Inquiry"
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="gradient-btn rounded-xl px-8 py-4 text-base font-bold flex items-center gap-2"
           >
-            Hire Me
+            Book a Call
             <span className="material-symbols-outlined text-lg">
               arrow_forward
             </span>
@@ -101,27 +106,44 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Agent system visual */}
+        <motion.p
+          className="mt-4 text-sm text-[var(--text-muted)]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}
+        >
+          Prefer email?{" "}
+          <a
+            href={BOOKING_MAILTO}
+            className="text-[var(--primary)] hover:underline font-semibold"
+          >
+            Email me directly
+          </a>
+        </motion.p>
+
+        {/* System architecture visual */}
         <motion.div
-          className="mt-10 flex justify-center"
+          className="mt-12 flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
         >
-          <HeroAgentSystem />
+          <img
+            src="/videos/mcp-data-flow-poster.jpg"
+            alt="An MCP hub routing data between inputs and outputs — the kind of agentic system architecture I build"
+            width={1280}
+            height={720}
+            className="w-full max-w-3xl rounded-xl border border-[var(--border)] glass-panel"
+          />
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      >
+      {/* Scroll indicator — CSS bounce, reduced-motion safe via globals.css */}
+      <div className="hero-scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2">
         <span className="material-symbols-outlined text-[var(--text-muted)] text-2xl">
           expand_more
         </span>
-      </motion.div>
+      </div>
     </section>
   );
 }

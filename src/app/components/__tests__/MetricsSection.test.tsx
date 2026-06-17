@@ -101,9 +101,11 @@ describe("MetricsSection", () => {
     });
 
     it("renders static '20% → ' prefix for User Retention", () => {
-      render(<MetricsSection />);
-      // The spec requires static "20% → " prefix text
-      expect(screen.getByText(/20%/)).toBeTruthy();
+      const { container } = render(<MetricsSection />);
+      // Static prefix lives in the User Retention metric card (the 5-card band).
+      // An outcome card below also mentions "20% → 80%", so scope to the band.
+      const band = container.querySelector(".lg\\:grid-cols-5");
+      expect(band?.textContent).toMatch(/20%/);
     });
   });
 
@@ -149,6 +151,34 @@ describe("MetricsSection", () => {
     it("renders 'After end-to-end redesign' sublabel", () => {
       render(<MetricsSection />);
       expect(screen.getByText("After end-to-end redesign")).toBeTruthy();
+    });
+  });
+
+  describe("outcome case studies", () => {
+    it("renders the Outcomes heading", () => {
+      render(<MetricsSection />);
+      expect(screen.getByText("Outcomes")).toBeTruthy();
+    });
+
+    it("renders three anonymized outcome cards", () => {
+      render(<MetricsSection />);
+      expect(screen.getByText(/4-hour batch/i)).toBeTruthy();
+      expect(screen.getByText(/20% → 80% user retention/i)).toBeTruthy();
+      expect(screen.getByText(/\$2M\+\/mo revenue impact/i)).toBeTruthy();
+    });
+
+    it("keeps the 5 metric cards distinct from the 3 outcome cards", () => {
+      const { container } = render(<MetricsSection />);
+      expect(container.querySelectorAll(".glass-panel.card-glow")).toHaveLength(
+        5,
+      );
+      expect(container.querySelectorAll(".outcome-card")).toHaveLength(3);
+    });
+
+    it("fabricates no client names or testimonials", () => {
+      render(<MetricsSection />);
+      expect(screen.queryByText(/client/i)).toBeNull();
+      expect(screen.queryByText(/testimonial/i)).toBeNull();
     });
   });
 });

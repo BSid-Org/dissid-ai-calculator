@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { BOOKING_URL } from "../lib/booking";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -53,12 +54,14 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
-          <button
-            onClick={() => handleNav("#calculator")}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="gradient-btn rounded-lg px-5 py-2 text-sm font-bold"
           >
-            Hire Me
-          </button>
+            Book a Call
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -85,12 +88,15 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
-          <button
-            onClick={() => handleNav("#calculator")}
-            className="w-full gradient-btn rounded-lg px-5 py-3 text-sm font-bold mt-2"
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            className="block w-full text-center gradient-btn rounded-lg px-5 py-3 text-sm font-bold mt-2"
           >
-            Hire Me
-          </button>
+            Book a Call
+          </a>
         </div>
       )}
     </nav>
