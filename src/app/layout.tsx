@@ -40,7 +40,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,apartment,arrow_back,arrow_forward,auto_awesome,calendar_month,campaign,check_circle,close,cloud,code,construction,corporate_fare,description,diversity_3,edit_note,error,event,expand_more,favorite,group,groups,inventory_2,menu,person,query_stats,rocket_launch,savings,schedule,shopping_cart,support_agent,table_chart,trending_up,work&display=swap"
           rel="stylesheet"
         />
       </head>
