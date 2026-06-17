@@ -8,6 +8,7 @@ import {
   teamSizes,
   calculateResults,
 } from "./calculator-data";
+import { BOOKING_URL, BOOKING_MAILTO } from "../lib/booking";
 
 const stepLabels = [
   { label: "INDUSTRY SELECTION", nav: "Project" },
@@ -287,20 +288,34 @@ function ResultsPage({
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row pt-4">
-        <a
-          href="mailto:siddhant@dissid.ca?subject=AI%20Agency%20Estimate&body=I%20just%20used%20your%20AI%20calculator%20and%20I%27m%20interested%20in%20learning%20more."
-          className="flex-1 gradient-btn rounded-xl px-6 py-4 text-center font-bold flex items-center justify-center gap-2"
-        >
-          <Icon name="auto_awesome" className="text-lg" />
-          Get Your Custom Plan
-        </a>
-        <button
-          onClick={onRestart}
-          className="flex-1 rounded-xl border border-[var(--border)] px-6 py-4 text-center font-semibold text-[var(--text-muted)] hover:bg-[var(--bg-card-hover)] transition-colors"
-        >
-          Start Over
-        </button>
+      <div className="pt-4">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 gradient-btn rounded-xl px-6 py-4 text-center font-bold flex items-center justify-center gap-2"
+          >
+            <Icon name="event" className="text-lg" />
+            Book a call to capture this $
+            {results.annualSavings.toLocaleString()}/yr
+          </a>
+          <button
+            onClick={onRestart}
+            className="flex-1 rounded-xl border border-[var(--border)] px-6 py-4 text-center font-semibold text-[var(--text-muted)] hover:bg-[var(--bg-card-hover)] transition-colors"
+          >
+            Start Over
+          </button>
+        </div>
+        <p className="mt-3 text-center text-sm text-[var(--text-muted)]">
+          Prefer email?{" "}
+          <a
+            href={BOOKING_MAILTO}
+            className="text-[var(--primary)] hover:underline font-semibold"
+          >
+            Email me directly
+          </a>
+        </p>
       </div>
     </motion.div>
   );
