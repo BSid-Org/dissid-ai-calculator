@@ -22,6 +22,7 @@ body {
   background: var(--bg-dark);
   color: var(--text-primary);
   font-family:
+    var(--font-inter),
     "Inter",
     system-ui,
     -apple-system,
@@ -140,4 +141,91 @@ input[type="range"]::-moz-range-thumb {
 }
 .animate-count-up {
   animation: count-up 0.6s ease-out forwards;
+}
+
+/* Hero ambient background — GPU/compositor-driven (replaces Framer Motion blobs) */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  will-change: transform;
+}
+.hero-blob-1 {
+  top: 25%;
+  left: 25%;
+  width: 500px;
+  height: 500px;
+  opacity: 0.2;
+  animation: hero-drift-1 12s ease-in-out infinite;
+}
+.hero-blob-2 {
+  bottom: 25%;
+  right: 25%;
+  width: 400px;
+  height: 400px;
+  opacity: 0.15;
+  animation: hero-drift-2 15s ease-in-out infinite;
+}
+.hero-blob-3 {
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  opacity: 0.1;
+  filter: blur(100px);
+  animation: hero-pulse 8s ease-in-out infinite;
+}
+@keyframes hero-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(60px, -40px);
+  }
+  66% {
+    transform: translate(-40px, 60px);
+  }
+}
+@keyframes hero-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-50px, 50px);
+  }
+  66% {
+    transform: translate(30px, -30px);
+  }
+}
+@keyframes hero-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+/* Scroll indicator bounce */
+.hero-scroll-indicator {
+  animation: hero-bounce 2s ease-in-out infinite;
+}
+@keyframes hero-bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob,
+  .hero-scroll-indicator {
+    animation: none;
+  }
 }
