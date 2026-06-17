@@ -28,6 +28,7 @@ export default function WhatIBuildVideo() {
           controls
           muted
           playsInline
+          preload="none"
           className="w-full h-full"
         />
       )}
