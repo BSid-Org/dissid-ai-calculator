@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import HeroVisual from "./HeroVisual";
 import { BOOKING_URL, BOOKING_MAILTO } from "../lib/booking";
 
 export default function Hero() {
@@ -128,13 +129,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
         >
-          <img
-            src="/videos/mcp-data-flow-poster.jpg"
-            alt="An MCP hub routing data between inputs and outputs — the kind of agentic system architecture I build"
-            width={1280}
-            height={720}
-            className="w-full max-w-3xl rounded-xl border border-[var(--border)] glass-panel"
-          />
+          <HeroVisual />
         </motion.div>
       </div>
 
