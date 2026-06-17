@@ -46,6 +46,11 @@ vi.mock("framer-motion", () => ({
   useInView: vi.fn(() => true),
 }));
 
+// HeroVisual has its own poster/video gating + matchMedia; tested separately.
+vi.mock("../HeroVisual", () => ({
+  default: () => <div data-testid="hero-visual" />,
+}));
+
 describe("Hero", () => {
   it("primary CTA points to the booking URL in a new tab", () => {
     render(<Hero />);
@@ -66,8 +71,8 @@ describe("Hero", () => {
     expect(screen.getByText(/Available for fractional/i)).toBeTruthy();
   });
 
-  it("renders the MCP architecture hero image", () => {
+  it("renders the hero visual", () => {
     render(<Hero />);
-    expect(screen.getByRole("img", { name: /MCP/i })).toBeTruthy();
+    expect(screen.getByTestId("hero-visual")).toBeTruthy();
   });
 });
