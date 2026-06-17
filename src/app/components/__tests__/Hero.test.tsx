@@ -46,9 +46,6 @@ vi.mock("framer-motion", () => ({
   useInView: vi.fn(() => true),
 }));
 
-// HeroAgentSystem has its own framer-motion usage; not under test here.
-vi.mock("../HeroAgentSystem", () => ({ default: () => null }));
-
 describe("Hero", () => {
   it("primary CTA points to the booking URL in a new tab", () => {
     render(<Hero />);
@@ -67,5 +64,10 @@ describe("Hero", () => {
   it("renders the availability signal", () => {
     render(<Hero />);
     expect(screen.getByText(/Available for fractional/i)).toBeTruthy();
+  });
+
+  it("renders the MCP architecture hero image", () => {
+    render(<Hero />);
+    expect(screen.getByRole("img", { name: /MCP/i })).toBeTruthy();
   });
 });

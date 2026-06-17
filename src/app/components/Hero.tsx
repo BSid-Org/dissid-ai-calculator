@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import HeroAgentSystem from "./HeroAgentSystem";
 import { BOOKING_URL, BOOKING_MAILTO } from "../lib/booking";
 
 export default function Hero() {
@@ -122,14 +121,20 @@ export default function Hero() {
           </a>
         </motion.p>
 
-        {/* Agent system visual */}
+        {/* System architecture visual */}
         <motion.div
-          className="mt-10 flex justify-center"
+          className="mt-12 flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
         >
-          <HeroAgentSystem />
+          <img
+            src="/videos/mcp-data-flow-poster.jpg"
+            alt="An MCP hub routing data between inputs and outputs — the kind of agentic system architecture I build"
+            width={1280}
+            height={720}
+            className="w-full max-w-3xl rounded-xl border border-[var(--border)] glass-panel"
+          />
         </motion.div>
       </div>
 
