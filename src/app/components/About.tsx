@@ -59,16 +59,17 @@ export default function About() {
               </p>
 
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-6">
-                Based in Kitchener-Waterloo. I ship production systems
-                end-to-end — agent fleets, MCP servers, voice and vision
-                pipelines, and AI hardware. Founder of{" "}
+                Based in Kitchener-Waterloo, available for fractional and
+                contract work. I ship production systems end-to-end — agent
+                fleets, MCP servers, and voice/vision pipelines. I also build{" "}
                 <a
                   href="https://dissid.ca"
                   className="text-[var(--primary)] hover:underline font-semibold"
                 >
                   DISSID
-                </a>{" "}
-                (scan-before-shred device, provisional patent, raising seed).
+                </a>
+                , a hardware venture (provisional patent) — proof I take things
+                from agents to silicon and ship the whole stack.
               </p>
 
               {/* Skills */}
