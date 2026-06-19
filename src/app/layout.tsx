@@ -11,6 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dissid.ai"),
   title: "Siddhant Badola — Senior AI / Agentic Systems Engineer",
   description:
     "Production agent fleets, MCP integrations, voice/vision pipelines, and AI hardware. Open to full-time and fractional engagements.",
@@ -21,6 +22,21 @@ export const metadata: Metadata = {
     url: "https://dissid.ai",
     siteName: "DISSID",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Siddhant Badola — Senior AI / Agentic Systems Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Siddhant Badola — Senior AI / Agentic Systems Engineer",
+    description:
+      "Production agent fleets, MCP integrations, voice/vision pipelines, and AI hardware. Open to full-time and fractional engagements.",
+    images: ["/og-image.jpg"],
   },
 };
 
