@@ -1,6 +1,6 @@
 "use client";
 
-import { BOOKING_URL, BOOKING_MAILTO } from "../lib/booking";
+import { BOOKING_URL } from "../lib/booking";
 
 export default function Footer() {
   return (
@@ -27,13 +27,17 @@ export default function Footer() {
         </div>
 
         <p className="text-sm text-[var(--text-muted)] mb-6">
-          Prefer email?{" "}
-          <a
-            href={BOOKING_MAILTO}
+          Prefer to write?{" "}
+          <button
+            onClick={() =>
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
             className="text-[var(--primary)] hover:underline font-semibold"
           >
-            Email me directly
-          </a>
+            Send me a message
+          </button>
         </p>
 
         <p className="text-sm text-[var(--text-muted)] mb-12">
