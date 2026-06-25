@@ -7,6 +7,7 @@ import Calculator from "./components/Calculator";
 import WhatIBuildVideo from "./components/WhatIBuildVideo";
 import ArchitectureFleet from "./components/ArchitectureFleet";
 import About from "./components/About";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ErrorBoundaryWrapper from "./components/ErrorBoundaryWrapper";
 
@@ -63,6 +64,18 @@ export default function Home() {
         </section>
         <section id="about">
           <About />
+        </section>
+        <section id="contact" className="py-20 px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+              Send a <span className="gradient-text">Message</span>
+            </h2>
+            <p className="text-[var(--text-muted)] max-w-lg mx-auto">
+              Prefer to write instead of booking a call? Drop me a note and
+              I&apos;ll get back to you.
+            </p>
+          </div>
+          <Contact />
         </section>
         <Footer />
       </main>

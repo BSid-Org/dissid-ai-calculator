@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Footer from "../Footer";
-import { BOOKING_URL, BOOKING_MAILTO } from "../../lib/booking";
+import { BOOKING_URL } from "../../lib/booking";
 
 // Footer does not import framer-motion — no mock needed.
 describe("Footer", () => {
@@ -13,9 +13,11 @@ describe("Footer", () => {
     expect(cta.getAttribute("rel")).toContain("noopener");
   });
 
-  it("offers an email fallback", () => {
+  it('offers a "Send me a message" path to the contact form', () => {
     render(<Footer />);
-    const email = screen.getByRole("link", { name: /Email me directly/i });
-    expect(email.getAttribute("href")).toBe(BOOKING_MAILTO);
+    // The mailto fallback was replaced by a button that scrolls to the
+    // in-page contact form (the form is the secondary "send a message" path).
+    const msg = screen.getByRole("button", { name: /Send me a message/i });
+    expect(msg).toBeTruthy();
   });
 });
