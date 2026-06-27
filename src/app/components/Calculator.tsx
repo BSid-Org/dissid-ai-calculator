@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   industries,
@@ -328,6 +328,23 @@ export default function Calculator() {
   const [teamSize, setTeamSize] = useState("");
   const [hoursPerWeek, setHoursPerWeek] = useState(20);
   const [isLoading, setIsLoading] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+
+  // Keep the user on the calculator when steps change. Run AFTER the new step
+  // mounts (AnimatePresence mode="wait" unmounts the old step first, which
+  // briefly collapses height and snaps the page up) — an inline scroll on click
+  // gets overridden by that reflow, so we scroll in an effect instead.
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return; // don't auto-scroll to the calculator on initial page load
+    }
+    const id = requestAnimationFrame(() =>
+      rootRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+    );
+    return () => cancelAnimationFrame(id);
+  }, [step, isLoading]);
 
   const togglePainPoint = (id: string) => {
     setSelectedPainPoints((prev) =>
@@ -349,15 +366,12 @@ export default function Calculator() {
   const handleContinue = () => {
     if (step === 3) {
       setIsLoading(true);
-      window.scrollTo(0, 0);
       setTimeout(() => {
         setIsLoading(false);
         setStep(4);
-        window.scrollTo(0, 0);
       }, 2000);
     } else {
       setStep((s) => s + 1);
-      window.scrollTo(0, 0);
     }
   };
 
@@ -373,7 +387,10 @@ export default function Calculator() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
+    <div
+      ref={rootRef}
+      className="mx-auto max-w-3xl px-4 py-8 sm:py-12 scroll-mt-24"
+    >
       {step <= 3 && !isLoading && <ProgressBar step={step} total={3} />}
 
       <AnimatePresence mode="wait">
@@ -567,7 +584,6 @@ export default function Calculator() {
                 setSelectedPainPoints([]);
                 setTeamSize("");
                 setHoursPerWeek(20);
-                window.scrollTo(0, 0);
               }}
             />
           </motion.div>
@@ -580,7 +596,6 @@ export default function Calculator() {
             <button
               onClick={() => {
                 setStep((s) => s - 1);
-                window.scrollTo(0, 0);
               }}
               className="flex items-center gap-1 text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
             >
