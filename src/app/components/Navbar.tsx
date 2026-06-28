@@ -55,6 +55,12 @@ export default function Navbar() {
             </button>
           ))}
           <a
+            href="/pricing"
+            className="text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            Pricing
+          </a>
+          <a
             href="/tokencut"
             className="text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
           >
@@ -94,6 +100,13 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+          <a
+            href="/pricing"
+            onClick={() => setMobileOpen(false)}
+            className="block w-full text-left py-3 text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            Pricing
+          </a>
           <a
             href="/tokencut"
             onClick={() => setMobileOpen(false)}
