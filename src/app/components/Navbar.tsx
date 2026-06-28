@@ -55,6 +55,12 @@ export default function Navbar() {
             </button>
           ))}
           <a
+            href="/tokencut"
+            className="text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            tokencut
+          </a>
+          <a
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
@@ -88,6 +94,13 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
+          <a
+            href="/tokencut"
+            onClick={() => setMobileOpen(false)}
+            className="block w-full text-left py-3 text-sm font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            tokencut
+          </a>
           <a
             href={BOOKING_URL}
             target="_blank"
