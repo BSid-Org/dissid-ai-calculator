@@ -4,12 +4,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "tokencut — the verified semantic cache | DISSID",
   description:
-    "A drop-in LLM cache with a mandatory verifier that bounds your wrong-answer rate. Naive semantic caches return wrong answers 9–52% of the time with no safe threshold; tokencut reaches ≤1% false-hit, measured on 5,000 labeled pairs.",
+    "In a regulated or customer-facing LLM app, a wrong cached answer is a trust and compliance failure — not a rounding error. Naive semantic caches serve wrong answers 9–52% of the time with no safe threshold; tokencut bounds the rate to ≤1% false-hit, measured on 5,000 labeled pairs. Reuse you can trust and prove.",
   alternates: { canonical: "https://dissid.ai/tokencut" },
   openGraph: {
     title: "tokencut — the verified semantic cache",
     description:
-      "Semantic caches return wrong answers 9–52% of the time. tokencut is the first to bound the rate: ≤1% false-hit, measured.",
+      "A wrong cached answer in a regulated app is a compliance failure, not a rounding error. tokencut bounds the rate — ≤1% false-hit, measured — so you can reuse and prove it.",
     url: "https://dissid.ai/tokencut",
     siteName: "DISSID",
     type: "website",
@@ -127,9 +127,11 @@ export default function TokencutProduct() {
             <span className="gradient-text">returns wrong answers</span> — and nobody measures how often.
           </h1>
           <p className="mt-6 text-lg text-[var(--text-secondary)] max-w-2xl">
-            tokencut is a drop-in LLM cache with a mandatory verifier that bounds your false-hit
-            rate — the percentage of times the cache serves a wrong answer for a similar-but-different
-            query. The first cache to ship a measurable, tunable wrong-answer ceiling.
+            In a regulated or customer-facing app, a wrong cached answer isn&apos;t a rounding error —
+            it&apos;s a trust and compliance failure. tokencut is a drop-in LLM cache with a mandatory
+            verifier that bounds your false-hit rate — the share of times the cache serves a wrong answer
+            for a similar-but-different query — to a level you set and can prove. The first cache with a
+            measurable, tunable wrong-answer ceiling: <span className="text-[var(--text-primary)] font-semibold">reuse you can trust</span>.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#pricing" className="gradient-btn rounded-lg px-5 py-3 text-sm">
