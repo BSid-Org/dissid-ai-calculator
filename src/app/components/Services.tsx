@@ -49,6 +49,11 @@ export default function Services() {
             Production AI Systems,{" "}
             <span className="gradient-text">Not Demos</span>
           </h2>
+          <p className="mt-4 text-sm text-[var(--text-secondary)] max-w-xl mx-auto">
+            Hiring me direct? Above. Running a Kitchener-Waterloo team? I also
+            help professional-services firms put these same systems to work —
+            done-for-you, local, and accountable.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
