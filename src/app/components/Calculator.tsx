@@ -341,7 +341,8 @@ export default function Calculator() {
       return; // don't auto-scroll to the calculator on initial page load
     }
     const id = requestAnimationFrame(() =>
-      rootRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+      // scrollIntoView is unimplemented in some jsdom builds — guard the call.
+      rootRef.current?.scrollIntoView?.({ behavior: "smooth", block: "start" }),
     );
     return () => cancelAnimationFrame(id);
   }, [step, isLoading]);
