@@ -29,6 +29,14 @@ const services = [
       "Provider routing, token-budget systems, observability — real systems, measured savings",
     savings: "Kafka · FastAPI · Firebase",
   },
+  {
+    title: "On-Premise & Private AI",
+    subtext: "Run AI on your own infrastructure — your data never leaves.",
+    icon: "dns",
+    description:
+      "Self-hosted LLM deployment for regulated and data-sensitive teams, with tokencut's verified compliant cache",
+    savings: "Ollama · vLLM · tokencut",
+  },
 ];
 
 export default function Services() {
@@ -50,9 +58,9 @@ export default function Services() {
             <span className="gradient-text">Not Demos</span>
           </h2>
           <p className="mt-4 text-sm text-[var(--text-secondary)] max-w-xl mx-auto">
-            Hiring me direct? Above. Running a Kitchener-Waterloo team? I also
-            help professional-services firms put these same systems to work —
-            done-for-you, local, and accountable.
+            These are the systems I build. For Kitchener-Waterloo
+            professional-services firms, I build them for you — done-for-you,
+            fixed scope, pay on delivery.
           </p>
         </motion.div>
 
