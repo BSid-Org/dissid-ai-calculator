@@ -130,13 +130,15 @@ describe("Soc2Scanner", () => {
     ).toBeTruthy();
   });
 
-  it("links the CTA to the DISSID services/pricing section", () => {
+  it("drives the primary CTA to the Readiness Sprint booking link", () => {
     render(<Soc2Scanner />);
     advanceToResults("Yes");
     const cta = screen.getByRole("link", {
-      name: /Get audit-ready faster — DISSID/i,
+      name: /Start my 5-day Readiness Sprint/i,
     });
-    expect(cta.getAttribute("href")).toBe("/#services");
+    expect(cta.getAttribute("href")).toBe(
+      "https://calendly.com/siddhantbadola5/30min",
+    );
   });
 
   describe("email capture", () => {

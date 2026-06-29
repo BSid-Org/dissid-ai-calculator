@@ -10,7 +10,7 @@ import {
   type CategoryId,
   type Priority,
 } from "./soc2-data";
-import { BOOKING_MAILTO, CONTACT_ENDPOINT } from "../lib/booking";
+import { BOOKING_MAILTO, BOOKING_URL, CONTACT_ENDPOINT } from "../lib/booking";
 
 function Icon({ name, className = "" }: { name: string; className?: string }) {
   return (
@@ -456,22 +456,36 @@ function ResultsPage({
         highGaps={result.highGaps}
       />
 
-      {/* CTA to pricing / Agent Sprint */}
-      <div className="glass-panel rounded-xl p-6 text-center">
-        <h3 className="font-bold text-base mb-2">
-          Get audit-ready faster — with DISSID
+      {/* CTA — DISSID Readiness Sprint (loss-aversion / FOMO framing) */}
+      <div className="glass-panel-selected rounded-xl p-6 text-center">
+        <p className="text-[10px] uppercase tracking-widest font-bold text-[var(--secondary)] mb-2">
+          Don&apos;t lose the deal on a checkbox
+        </p>
+        <h3 className="font-bold text-lg mb-2">
+          Your buyers ask for SOC 2 before they sign
         </h3>
-        <p className="text-sm text-[var(--text-secondary)] mb-4 max-w-md mx-auto">
-          The Agent Sprint stands up the controls, evidence and automation that
-          close these gaps — fast.
+        <p className="text-sm text-[var(--text-secondary)] mb-5 max-w-md mx-auto">
+          Every week these gaps stay open, the contract goes to the vendor
+          who&apos;s already compliant. The DISSID Readiness Sprint closes them
+          in 5 days — fixed scope, a human sign-off, ready to hand straight to
+          your auditor.
         </p>
         <a
-          href="/#services"
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex gradient-btn rounded-xl px-6 py-3.5 text-sm font-bold items-center justify-center gap-2"
         >
           <Icon name="rocket_launch" className="text-base" />
-          Get audit-ready faster — DISSID
+          Start my 5-day Readiness Sprint
         </a>
+        <p className="mt-4 text-xs text-[var(--text-muted)]">
+          Or{" "}
+          <a href="/#services" className="underline hover:text-[var(--text-secondary)]">
+            see everything DISSID builds
+          </a>
+          .
+        </p>
       </div>
 
       <button
