@@ -134,7 +134,7 @@ describe("Soc2Scanner", () => {
     render(<Soc2Scanner />);
     advanceToResults("Yes");
     const cta = screen.getByRole("link", {
-      name: /Start my 5-day Readiness Sprint/i,
+      name: /Claim your Readiness Sprint slot/i,
     });
     expect(cta.getAttribute("href")).toBe(
       "https://calendly.com/siddhantbadola5/30min",

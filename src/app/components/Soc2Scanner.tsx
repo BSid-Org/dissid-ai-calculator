@@ -456,19 +456,21 @@ function ResultsPage({
         highGaps={result.highGaps}
       />
 
-      {/* CTA — DISSID Readiness Sprint (loss-aversion / FOMO framing) */}
+      {/* CTA — DISSID Readiness Sprint (aggressive loss-aversion framing) */}
       <div className="glass-panel-selected rounded-xl p-6 text-center">
         <p className="text-[10px] uppercase tracking-widest font-bold text-[var(--secondary)] mb-2">
-          Don&apos;t lose the deal on a checkbox
+          {result.highGaps > 0
+            ? `${result.highGaps} open gap${result.highGaps > 1 ? "s" : ""} standing between you and the contract`
+            : "The badge your competitors already wave at buyers"}
         </p>
         <h3 className="font-bold text-lg mb-2">
           Your buyers ask for SOC 2 before they sign
         </h3>
         <p className="text-sm text-[var(--text-secondary)] mb-5 max-w-md mx-auto">
-          Every week these gaps stay open, the contract goes to the vendor
-          who&apos;s already compliant. The DISSID Readiness Sprint closes them
-          in 5 days — fixed scope, a human sign-off, ready to hand straight to
-          your auditor.
+          Every week these gaps stay open, the deal goes to the vendor
+          who&apos;s already compliant — and that revenue doesn&apos;t come
+          back. The DISSID Readiness Sprint closes them in 5 days flat: fixed
+          scope, a human sign-off, ready to hand straight to your auditor.
         </p>
         <a
           href={BOOKING_URL}
@@ -477,10 +479,11 @@ function ResultsPage({
           className="inline-flex gradient-btn rounded-xl px-6 py-3.5 text-sm font-bold items-center justify-center gap-2"
         >
           <Icon name="rocket_launch" className="text-base" />
-          Start my 5-day Readiness Sprint
+          Claim your Readiness Sprint slot
         </a>
         <p className="mt-4 text-xs text-[var(--text-muted)]">
-          Or{" "}
+          I run a limited number of sprints each month — book before they&apos;re
+          gone. Or{" "}
           <a href="/#services" className="underline hover:text-[var(--text-secondary)]">
             see everything DISSID builds
           </a>
