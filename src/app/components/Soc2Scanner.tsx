@@ -469,8 +469,9 @@ function ResultsPage({
         <p className="text-sm text-[var(--text-secondary)] mb-5 max-w-md mx-auto">
           Every week these gaps stay open, the deal goes to the vendor
           who&apos;s already compliant — and that revenue doesn&apos;t come
-          back. The DISSID Readiness Sprint closes them in 5 days flat: fixed
-          scope, a human sign-off, ready to hand straight to your auditor.
+          back. The DISSID Readiness Sprint closes them in 5 days flat —
+          without burning your engineers on evidence spreadsheets for a month.
+          Fixed scope, a human sign-off, ready to hand straight to your auditor.
         </p>
         <a
           href={BOOKING_URL}
