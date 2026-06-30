@@ -7,7 +7,7 @@ const services = [
   {
     title: "Agentic Fleets & MCP Servers",
     subtext:
-      "AI that does multi-step work for you — wired into the tools you already use.",
+      "The multi-step work your team still does by hand, a competitor's agent already finished.",
     icon: "auto_awesome",
     description:
       "Multi-agent orchestration, MCP integrations, task routing across LLM providers",
@@ -15,7 +15,8 @@ const services = [
   },
   {
     title: "Voice & Computer Vision",
-    subtext: "Talk-to-it interfaces and on-device image understanding.",
+    subtext:
+      "Every missed call and manually-sorted image is a customer — or an hour — you're losing right now.",
     icon: "support_agent",
     description:
       "Voice pipelines (TTS/STT, wake-word), on-device CV with 400% inference speedups",
@@ -23,7 +24,8 @@ const services = [
   },
   {
     title: "LLMOps & Cost Engineering",
-    subtext: "Make your AI features fast, reliable, and cheap to run.",
+    subtext:
+      "Slow, pricey AI features are a tax on every call — one your competitors already stopped paying.",
     icon: "trending_up",
     description:
       "Provider routing, token-budget systems, observability — real systems, measured savings",
@@ -31,7 +33,8 @@ const services = [
   },
   {
     title: "On-Premise & Private AI",
-    subtext: "Run AI on your own infrastructure — your data never leaves.",
+    subtext:
+      "Send your clients' data to someone else's cloud and you're one breach away from the trust you spent years building.",
     icon: "dns",
     description:
       "Self-hosted LLM deployment for regulated and data-sensitive teams, with tokencut's verified compliant cache",
@@ -51,16 +54,17 @@ export default function Services() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm uppercase tracking-widest text-[var(--text-muted)] font-bold mb-4">
-            What I Build
+            While you wait
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            Production AI Systems,{" "}
-            <span className="gradient-text">Not Demos</span>
+            Every task below, a competitor{" "}
+            <span className="gradient-text">already automated</span>
           </h2>
           <p className="mt-4 text-sm text-[var(--text-secondary)] max-w-xl mx-auto">
-            These are the systems I build. For Kitchener-Waterloo
-            professional-services firms, I build them for you — done-for-you,
-            fixed scope, pay on delivery.
+            Hours your team still burns by hand — the same emails answered, the
+            same data copied between tools, the same approvals chased. For
+            Kitchener-Waterloo professional-services firms, I take that work off
+            your plate: done-for-you, fixed scope, pay on delivery.
           </p>
         </motion.div>
 

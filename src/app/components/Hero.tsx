@@ -52,8 +52,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
         >
-          I build production agent fleets, MCP integrations, and AI systems that
-          ship. Open to full-time and fractional engagements.
+          The repetitive work still eating your team&apos;s week is already
+          automated — for everyone but you. I build the production agent systems
+          that take it off your plate. Open to full-time and fractional
+          engagements.
         </motion.p>
 
         {/* Availability signal — static, no animation */}

@@ -45,13 +45,13 @@ describe("Services", () => {
   it("offers an on-premise / private AI card for regulated teams", () => {
     render(<Services />);
     expect(screen.getByText(/On-Premise & Private AI/i)).toBeTruthy();
-    expect(screen.getByText(/your data never leaves/i)).toBeTruthy();
+    expect(screen.getByText(/one breach away from the trust/i)).toBeTruthy();
   });
 
   it("shows plain-language subtext under each service", () => {
     render(<Services />);
-    expect(screen.getByText(/multi-step work for you/i)).toBeTruthy();
-    expect(screen.getByText(/fast, reliable, and cheap to run/i)).toBeTruthy();
-    expect(screen.getByText(/on-device image understanding/i)).toBeTruthy();
+    expect(screen.getByText(/a competitor's agent already finished/i)).toBeTruthy();
+    expect(screen.getByText(/already stopped paying/i)).toBeTruthy();
+    expect(screen.getByText(/missed call and manually-sorted image/i)).toBeTruthy();
   });
 });
