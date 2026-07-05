@@ -7,9 +7,6 @@
       "hosting": {
         "calculator": [
           "dissid-ai-calculator"
-        ],
-        "consultancy": [
-          "dissid-consultancy"
         ]
       }
     }
