@@ -30,10 +30,10 @@ vi.mock("framer-motion", () => ({
 vi.mock("../ServiceLoops", () => ({ default: () => null }));
 
 describe("Services", () => {
-  it("renders exactly 3 service cards (AI Hardware removed)", () => {
+  it("renders exactly 4 service cards (agents, voice/CV, LLMOps, on-premise)", () => {
     const { container } = render(<Services />);
     const cards = container.querySelectorAll(".glass-panel.card-glow");
-    expect(cards).toHaveLength(3);
+    expect(cards).toHaveLength(4);
   });
 
   it("does not advertise the hardware product as a service", () => {
@@ -42,10 +42,16 @@ describe("Services", () => {
     expect(screen.queryByText(/scanner-shredder/i)).toBeNull();
   });
 
+  it("offers an on-premise / private AI card for regulated teams", () => {
+    render(<Services />);
+    expect(screen.getByText(/On-Premise & Private AI/i)).toBeTruthy();
+    expect(screen.getByText(/one breach away from the trust/i)).toBeTruthy();
+  });
+
   it("shows plain-language subtext under each service", () => {
     render(<Services />);
-    expect(screen.getByText(/multi-step work for you/i)).toBeTruthy();
-    expect(screen.getByText(/fast, reliable, and cheap to run/i)).toBeTruthy();
-    expect(screen.getByText(/on-device image understanding/i)).toBeTruthy();
+    expect(screen.getByText(/a competitor's agent already finished/i)).toBeTruthy();
+    expect(screen.getByText(/already stopped paying/i)).toBeTruthy();
+    expect(screen.getByText(/missed call and manually-sorted image/i)).toBeTruthy();
   });
 });
